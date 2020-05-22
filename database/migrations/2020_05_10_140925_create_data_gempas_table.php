@@ -15,6 +15,7 @@ class CreateDataGempasTable extends Migration
     {
         Schema::create('data_gempas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('tahun');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->double('kedalaman')->nullable();

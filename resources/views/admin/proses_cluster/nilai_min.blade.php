@@ -58,31 +58,31 @@
                         <nav aria-label="...">
                             <ul class="pagination" style="margin: 0px !important">
                                 <li class="page-item">
-                                    <a class="page-link" href="{{ route('admin.proses_clustering',[$max]) }}">Previous</a>
+                                    <a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_dua',[$max]) }}">Previous</a>
                                 </li>
                                 <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering',[$max]) }}">1</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_satu',[$max]) }}">2</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_dua',[$max]) }}">3</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_tiga',[$max]) }}">4</a></li>
                                 <li class="page-item active">
                                 <span class="page-link">
-                                    2
+                                    5
                                     <span class="sr-only">(current)</span>
                                     </span>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_dua',[$max]) }}">3</a></li>
-                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_tiga',[$max]) }}">4</a></li>
-                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_min',[$max]) }}">5</a></li>
                                 <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.cluster',[$max]) }}">6</a></li>
                                 <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.jumlah_cost',[$max]) }}">7</a></li>
                                 <li class="page-item">
-                                <a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_dua',[$max]) }}">Next</a>
+                                <a class="page-link" href="{{ route('admin.proses_clustering.cluster',[$max]) }}">Next</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <div class="col-md-12" style="margin-bottom: 10px;">
-                    <form action="{{ route('admin.proses_clustering.generate_nilai_cluster_satu',[$max]) }}" method="POST">
+                    <form action="{{ route('admin.proses_clustering.generate_nilai_min',[$max]) }}" method="POST">
                         @csrf {{ method_field('POST') }}
-                        <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-refresh fa-spin"></i>&nbsp; Generate Nilai Cluster 1</button>
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-refresh fa-spin"></i>&nbsp; Generate Nilai Min</button>
                     </form>
                 </div>
                 <div class="col-md-12">
@@ -94,6 +94,9 @@
                                 <th>Kedalaman</th>
                                 <th>Kekuatan</th>
                                 <th>Nilai Cluster 1</th>
+                                <th>Nilai Cluster 2</th>
+                                <th>Nilai Cluster 3</th>
+                                <th>Nilai Min</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -107,6 +110,9 @@
                                     <td> {{ $data->kedalaman }} </td>
                                     <td> {{ $data->kekuatan }} </td>
                                     <td> {{ $data->nilai_cluster_1 }} </td>
+                                    <td> {{ $data->nilai_cluster_2 }} </td>
+                                    <td> {{ $data->nilai_cluster_3 }} </td>
+                                    <td> {{ $data->nilai_min }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

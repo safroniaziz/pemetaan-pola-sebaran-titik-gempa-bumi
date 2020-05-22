@@ -17,6 +17,7 @@ class CreateNilaiCostsTable extends Migration
             $table->increments('id');
             $table->string('iterasi_ke');
             $table->float('nilai_cost');
+            $table->timestamps();
         });
     }
 

@@ -15,21 +15,24 @@
         <i class="fa fa-tasks"></i> <span>Proses Clustering</span>
     </a>
 </li>
-{{-- 
-<li class="treeview {{ set_active(['admin.tentor','admin.mata_pelajaran','admin.mapel_tentor']) }}">
+
+
+<li class="treeview {{ set_active(['admin.informasi.table']) }}">
     <a href="#">
-        <i class="fa fa-pencil-square-o"></i> <span>Tentor & Mata Pelajaran</span>
+        <i class="fa fa-pencil-square-o"></i> <span>Informasi</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
     <ul class="treeview-menu " style="padding-left:25px;">
-        <li class="{{ set_active('admin.tentor') }}"><a href="{{ route('admin.tentor') }}"><i class="fa fa-address-card"></i>Data Tentor</a></li>
-        <li class="{{ set_active('admin.mata_pelajaran') }}"><a href="{{ route('admin.mata_pelajaran') }}"><i class="fa fa-pencil-square-o"></i>Mata Pelajaran</a></li>
-        <li class="{{ set_active('admin.mapel_tentor') }}"><a href="{{ route('admin.mapel_tentor') }}"><i class="fa fa-pencil-square-o"></i>Mata Pelajaran Tentor</a></li>
+        <li class="{{ set_active('admin.informasi.table') }}"><a href="{{ route('admin.informasi.table') }}"><i class="fa fa-address-card"></i>Dalam Table</a></li>
+        <li class="{{ set_active('admin.informasi.table') }}"><a href="{{ route('admin.informasi.table') }}"><i class="fa fa-address-card"></i>Dalam Grafik</a></li>
+        <li class="{{ set_active('admin.informasi.table') }}"><a href="{{ route('admin.informasi.table') }}"><i class="fa fa-address-card"></i>Dalam Peta</a></li>
+        {{-- <li class="{{ set_active('admin.mata_pelajaran') }}"><a href="{{ route('admin.mata_pelajaran') }}"><i class="fa fa-pencil-square-o"></i>Mata Pelajaran</a></li> --}}
+        {{-- <li class="{{ set_active('admin.mapel_tentor') }}"><a href="{{ route('admin.mapel_tentor') }}"><i class="fa fa-pencil-square-o"></i>Mata Pelajaran Tentor</a></li> --}}
     </ul>
 </li>
-
+{{-- 
 <li class="treeview {{ set_active(['admin.daftar_kelas','admin.pembahasan','admin.jadwal']) }}">
     <a href="#">
         <i class="fa fa-calendar"></i> <span>Manajemen Kelas</span>

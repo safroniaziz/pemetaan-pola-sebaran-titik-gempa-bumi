@@ -26,6 +26,49 @@
         <div class="box-body table-responsive">
             <div class="row">
                 <div class="col-md-12">
+                    @if (empty($max))
+                        @if ($max == $max_cost)
+                            @if ($max == 1)
+                                <div class="alert alert-danger alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <i class="fa fa-success-circle"></i><strong>Perhatian :</strong> Iterasi ke {{ $max }} sudah berhasil, silahkan lanjutkan ke iterasi ke {{ $max+1 }}
+                                </div>
+                            @endif
+                            @else
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <i class="fa fa-success-circle"></i><strong>Perhatian :</strong> Silahkan Generate Pusat Cluster Terlebih Dahulu
+                            </div>
+                        @endif
+                        @else
+                        @if ($max == $max_cost)
+                            @if ($max == 1)
+                                <div class="alert alert-danger alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <i class="fa fa-success-circle"></i><strong>Perhatian :</strong> Iterasi ke {{ $max }} sudah berhasil, silahkan lanjutkan ke iterasi ke {{ $max+1 }}
+                                </div>
+                                @else
+                                    @if ($cost_awal->nilai_cost < $cost_akhir->nilai_cost)
+                                        <div class="alert alert-success alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                                <i class="fa fa-success-circle"></i><strong>Perhatian :</strong> Iterasi dihentikan, nilai cost baru lebih besar dari nilai_cost lama
+                                        </div>
+                                        @else
+                                        <div class="alert alert-danger alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                                <i class="fa fa-success-circle"></i><strong>Perhatian :</strong> Iterasi ke {{ $max }} sudah berhasil, silahkan lanjutkan ke iterasi ke {{ $max+1 }}
+                                        </div>
+                                @endif
+                            @endif
+                            @else
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <i class="fa fa-success-circle"></i><strong>Perhatian :</strong> Pusat Cluster sudah digenerate, saat ini adalah langkah cluster yang ke {{ $max }}, silahkan klik next dan generate semua nilai sampai didapatkan nilai cost
+                            </div>
+                        @endif
+                    @endif
+                </div>
+                <div class="col-md-12">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -44,20 +87,26 @@
                                     <span class="sr-only">(current)</span>
                                     </span>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_satu') }}">2</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_satu',[$max]) }}">2</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_dua',[$max]) }}">3</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_tiga',[$max]) }}">4</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.nilai_min',[$max]) }}">5</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.cluster',[$max]) }}">6</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('admin.proses_clustering.jumlah_cost',[$max]) }}">7</a></li>
                                 <li class="page-item">
-                                <a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_satu') }}">Next</a>
+                                <a class="page-link" href="{{ route('admin.proses_clustering.nilai_cluster_satu',[$max]) }}">Next</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <div class="col-md-12" style="margin-bottom: 10px;">
-                    <form action="{{ route('admin.proses_clustering.generate_pusat_cluster') }}" method="POST">
+                    <form action="{{ route('admin.proses_clustering.generate_pusat_cluster',[$max]) }}" method="POST">
                         @csrf {{ method_field('POST') }}
                         <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-refresh fa-spin"></i>&nbsp; Generate Pusat Cluster</button>
                     </form>
                 </div>
+                
                 <div class="col-md-12">
                     <table class="table table-bordered table-hover" id="kelas">
                         <thead class="bg-primary">
